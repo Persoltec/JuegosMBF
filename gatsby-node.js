@@ -54,7 +54,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const imgnex = next ? next.portada.value.name : '/none/'
     const imgnexpre = '/' + imgnex + '|' + imgpre + '/'
 
-    console.log(JSON.stringify(next, null, 4))
+    //console.log(JSON.stringify(next, null, 4))
 
     createPage({
       path: 'juegos/' + juego.node.fields.slug,
@@ -74,14 +74,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
   if (node.internal.type === `CockpitProductos`) {
     const value = slugify(node.titulo.value)
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    })
-  }
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
     createNodeField({
       name: `slug`,
       node,
